@@ -19,6 +19,7 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
+    }
 
      post {
                 // If Maven was able to run the tests, even if some of the test
@@ -26,5 +27,6 @@ pipeline {
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
-                }
-            }
+    }
+}
+}
