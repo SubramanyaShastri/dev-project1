@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@SubramanyaShastri 
-SubramanyaShastri
-/
-dev-project1
-Public
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-dev-project1/my-app/pom.xml
-@SubramanyaShastri
-SubramanyaShastri first commit
-Latest commit ebdd137 last week
- History
- 1 contributor
-110 lines (108 sloc)  3.38 KB
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -139,18 +109,3 @@ Latest commit ebdd137 last week
     </plugins>
   </build>
 </project>
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-dev-project1/pom.xml at master · SubramanyaShastri/dev-project1
