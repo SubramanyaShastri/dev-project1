@@ -11,7 +11,15 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/SubramanyaShastri/dev-project1.git'
+                 dir("C:/ProgramData/Jenkins/.jenkins/workspace/GenaralDevopsASsignment1_master")  {
 
+ 
+
+                 bat 'mvn -Dmaven.test.failure.ignore=true clean package'
+
+ 
+
+                }
                 // Run Maven on a Unix agent.
                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
 
@@ -24,9 +32,12 @@ pipeline {
      post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-    }
+               
+          always {
+            junit(
+                allowEmptyResults: true,
+                testResults: '*/test-reports/.xml'
+          )
+      }
 }
 }
