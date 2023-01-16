@@ -1,136 +1,29 @@
 pipeline {
-
- 
-
-    agent any
-
- 
-
+    agent any 
     tools {
+        maven 'Maven-3.8.7'
 
- 
 
-        // Install the Maven version configured as "M3" and add it to the path.
-
- 
-
-        maven "M3"
     }
     stages {
-        stage('Build') {
+        stage('build && SonarQube analysis') {
             steps {
-                // Get some code from a GitHub repository
-
- 
-
-                git 'https://github.com/SubramanyaShastri/dev-project1.git'
-
- 
-
- 
-
- 
-
-                dir("C:/ProgramData/Jenkins/.jenkins/workspace/GenaralDevopsASsignment1_master")  {
-
- 
-
-                 bat 'mvn -Dmaven.test.failure.ignore=true clean package'
-
- 
-
+                withSonarQubeEnv('Sonar-Server') {
+                    // Optionally use a Maven environment you've configured already
+                    withMaven(maven:'M3') {
+                        bat 'mvn clean package sonar:sonar'
+                    }
                 }
-
- 
-
- 
-
- 
-
- 
-
-                // Run Maven on a Unix agent.
-
- 
-
-                bat "mvn -Dmaven.test.failure.ignore=true clean package"
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-                // To run Maven on a Windows agent, use
-
- 
-
-                //bat "mvn -Dmaven.test.failure.ignore=true clean package"
-
- 
-
             }
-
- 
-
         }
-
- 
-
-    }
-
- 
-
- 
-
-    post {
-
- 
-
-                // If Maven was able to run the tests, even if some of the test
-
- 
-
-                // failed, record the test results and archive the jar file.
-
- 
-
- 
-
-        always {
-
- 
-
-            junit(
-
- 
-
-                allowEmptyResults: true,
-
- 
-
-                testResults: '*/test-reports/.xml'
-
- 
-
-          )
-
- 
-
- 
-
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    waitForQualityGate abortPipeline: true
+                }
+            }
         }
-
- 
-
     }
-
- 
-
 }
