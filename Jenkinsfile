@@ -8,10 +8,14 @@ pipeline {
     stages {
         stage('build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('Sonar-Scanner') {
+                bat "assignqube"
+                withSonarQubeEnv('Server-sonar') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'M3') {
+                          dir("C:\ProgramData\Jenkins\.jenkins\workspace\GenaralDevopsASsignment1_main ") {
                         bat 'mvn clean package sonar:sonar'
+                    }
+                      
                     }
                 }
             }
