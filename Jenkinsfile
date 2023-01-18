@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('build && SonarQube analysis') {
             steps {
-                bat "Server-sonar"
+               
                 withSonarQubeEnv('Server-sonar') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'M3') {
