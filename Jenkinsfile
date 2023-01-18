@@ -14,13 +14,11 @@ pipeline {
                     withMaven(maven:'M3') {
                           dir("C:/ProgramData/Jenkins/.jenkins/workspace/GenaralDevopsASsignment1_main") {
                         bat 'mvn clean package sonar:sonar'
-                    }
-                      
+                          }
                     }
                 }
             }
         }
-    }
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
@@ -31,4 +29,5 @@ pipeline {
             }
         }
     }
+}
 
