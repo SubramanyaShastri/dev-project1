@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonarexp') {
+                withSonarQubeEnv('Server-sonar') {
                     // Optionally use a Maven environment you've configured already
-                 bat "mvn sonarexp \
+                 bat "mvn Server-sonar \
                               -Dsonar.projectKey=maven-jenkins-pipeline \
                         -Dsonar.host.url=http://localhost:9000" 
                     withMaven(maven:'M3') {
