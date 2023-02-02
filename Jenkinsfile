@@ -15,7 +15,7 @@ pipeline {
                               -Dsonar.projectKey=maven-jenkins-pipeline \
                         -Dsonar.host.url=http://localhost:9000" 
                     withMaven(maven:'M3') {
-                          dir("C:/ProgramData/Jenkins/.jenkins/workspace/GenaralDevopsASsignment1_main") {
+                          dir("C:\ProgramData\Jenkins\.jenkins\workspace\GenaralDevopsASsignment1_main") {
                         bat 'mvn clean package sonar:sonar'
                           }
                     }
