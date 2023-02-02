@@ -8,7 +8,7 @@ pipeline {  
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository  
-               git 'https://github.com/omkarmolawade00/assign1dev.git'  
+               git https://github.com/SubramanyaShastri/dev-project1.git 
                  dir("C:/ProgramData/Jenkins/.jenkins/workspace/GenaralDevopsASsignment1_main")
   {        
           bat 'mvn -Dmaven.test.failure.ignore=true clean package'         
